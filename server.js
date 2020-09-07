@@ -6,24 +6,27 @@ const cors = require('cors');
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-// const publicPath = path.join(__dirname, '..', 'public');
-
-const replies = require('./server/routes/replies');
-
-app.use(cors());
-// app.use(express.static(publicPath));
-
-app.use('/api/replies', replies);
-
 const dev = app.get('env') !== 'production';
 
 if (!dev) {
-    app.disable('x-powered-by');
-    app.use(express.static(path.resolve(__dirname, 'build')));
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-    });
+  app.disable('x-powered-by');
+  app.use(express.static(path.resolve(__dirname, 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
 }
+
+if (dev) {
+  require('dotenv').config();
+}
+
+const replies = require('./server/routes/replies');
+const group = require('./server/routes/group');
+
+app.use(cors());
+
+app.use('/api/replies', replies);
+app.use('/api/group', group);
 
 require('./server/io/replies')(io);
 

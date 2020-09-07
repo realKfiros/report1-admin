@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
 import {
   createMuiTheme,
   colors,
   ThemeProvider
 } from '@material-ui/core';
 import Axios from 'axios';
+import store from './redux/store';
 
 const { yellow, deepPurple } = colors;
 
@@ -28,9 +30,11 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
