@@ -6,7 +6,7 @@ const replySchema = new mongoose.Schema({
         required: true
     },
     reply: {
-        type: Number,
+        type: String,
         required: true
     }
 });

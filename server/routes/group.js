@@ -28,7 +28,7 @@ router.get('/members', async (req, res) => {
             });
             _members.push({
                 ...member._doc,
-                replyToday: reply ? reply.reply : 0
+                replyToday: reply ? reply.reply : 'לא בוצע'
             });
         }
         console.log(_members);
