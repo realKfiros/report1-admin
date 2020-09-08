@@ -11,7 +11,7 @@ const dev = app.get('env') !== 'production';
 if (!dev) {
   app.disable('x-powered-by');
   app.use(express.static(path.resolve(__dirname, 'build')));
-  app.get('*', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
   });
 }
