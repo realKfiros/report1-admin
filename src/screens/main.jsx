@@ -87,7 +87,7 @@ function MainScreen() {
         <>
             <Text variant="h5">
                 קוד קבוצה: {group}
-                <IconButton click={copyCode}>
+                <IconButton onClick={copyCode}>
                     <FileCopy />
                 </IconButton>    
             </Text>
@@ -104,7 +104,7 @@ function MainScreen() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {users.map(user => <User user={user} remove={() => removeMember(user.key)}/>)}
+                        {users.map(user => <User key={user.key} user={user} remove={() => removeMember(user.key)}/>)}
                     </TableBody>
                     <TableFooter>
                         <TableRow>
@@ -160,7 +160,7 @@ function User({ user, remove }) {
             </Cell>
             <Cell>{user.name}</Cell>
             <Cell>{user.key}</Cell>
-            <Cell>{user.todayReply}</Cell>
+            <Cell>{user.replyToday}</Cell>
             <Cell>{user.phoneNumber}</Cell>
             <Cell>
                 <IconButton onClick={whatsapp}>

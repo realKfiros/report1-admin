@@ -6,7 +6,6 @@ import {
 } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { RTL } from './components/RTL';
-import styled from 'styled-components';
 import Axios from 'axios';
 import io from 'socket.io-client';
 import { MainScreen } from './screens/main';

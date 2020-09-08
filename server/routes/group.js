@@ -18,7 +18,6 @@ router.get('/exists', async (req, res) => {
 router.get('/members', async (req, res) => {
     try {
         let group = await Group.findOne({ key: req.query.key }).exec();
-        console.log(group);
         let members = await User.find({}).where('key').in(group.users).exec();
         let replies = await Reply(new Date()).find({}).where('user').in(group.users).exec();
         let _members = [];
