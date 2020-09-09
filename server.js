@@ -22,11 +22,15 @@ if (dev) {
 
 const replies = require('./server/routes/replies');
 const group = require('./server/routes/group');
+const user = require('./server/routes/user');
+const replyType = require('./server/routes/replyType');
 
 app.use(cors());
 
 app.use('/api/replies', replies);
 app.use('/api/group', group);
+app.use('/api/user', user);
+app.use('/api/replyType', replyType);
 
 require('./server/io/replies')(io);
 

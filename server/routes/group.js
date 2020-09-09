@@ -30,7 +30,6 @@ router.get('/members', async (req, res) => {
                 replyToday: reply ? reply.reply : 'לא בוצע'
             });
         }
-        console.log(_members);
         res.send(_members);
     } catch (err) {
         console.log(err);
